@@ -1,0 +1,51 @@
+<div class="container">
+  <p-card class="container">
+    <h4 class="text-center font-weight-bold header-color"> Add Stock</h4>
+
+    <form [formGroup]="addStock" class="flex m-auto" (ngSubmit)="onSubmitStock()">
+      <div class="m-2 text-center">
+        <label>
+          <span class="align-self-center mr-5"> Ticker </span>
+          <input class="font-weight-bold" formControlName="stock_symbol" type="text">
+        </label>
+      </div>
+
+      <div class="m-2 text-center">
+        <label>
+          <span class="align-self-center mr-5">  Name </span>
+          <input class="font-weight-bold" formControlName="stock_name" type="text">
+        </label>
+      </div>
+
+      <div class="m-2 text-center">
+        <label>
+          <span class="align-self-center mr-5"> Price</span>
+          <input class="font-weight-bold" formControlName="stock_price" type="number">
+        </label>
+      </div>
+
+      <div class="m-2 text-center">
+        <label>
+          <span class="align-self-center mr-5"> Shares </span>
+          <input class="font-weight-bold" formControlName="shares" type="number">
+        </label>
+      </div>
+
+      <div class="m-2 text-center">
+        <label>
+          <span class="align-self-center mr-5"> Dividend </span>
+          <input class="font-weight-bold" formControlName="stock_dividend" type="number">
+        </label>
+      </div>
+
+      <div class="m-2 text-center">
+        <button pButton type="button" label="Reset" class="mr-2 ui-button-rounded ui-button-secondary"
+                (click)="resetStock()"></button>
+
+        <button pButton type="button" label="Submit" class="ml-2 ui-button-rounded"
+               (click)="onSubmitStock()" [disabled]="addStock.invalid" ></button>
+      </div>
+
+    </form>
+  </p-card>
+</div>
