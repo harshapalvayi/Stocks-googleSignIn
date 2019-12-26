@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {StocksService} from '../../services/stocks/stocks.service';
+import {Stock} from '../../shared/templates/models/stock';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,10 +11,12 @@ import {StocksService} from '../../services/stocks/stocks.service';
 export class DashboardComponent implements OnInit {
 
   public addStock: FormGroup;
+  public stocks: Stock[];
   constructor(private stockService: StocksService) { }
 
   ngOnInit() {
     this.createForm();
+    this.buildTableData();
   }
 
   createForm() {
@@ -24,13 +27,14 @@ export class DashboardComponent implements OnInit {
     this.addStock.reset();
   }
 
-  onSubmitStock() {
-    const stockData = this.addStock.getRawValue();
-    console.log('stockData', stockData);
-    this.stockService.save(stockData)
-      .subscribe(res => {
-        console.log("data saved !!!" , res);
-      })
+  buildTableData() {
+    this.stockService.getAllStocks().subscribe(stocks => this.stocks = stocks);
   }
 
+  onSubmitStock() {
+    const stockData = this.addStock.getRawValue();
+    this.stockService.save(stockData).subscribe(() => {
+      this.buildTableData();
+    });
+  }
 }

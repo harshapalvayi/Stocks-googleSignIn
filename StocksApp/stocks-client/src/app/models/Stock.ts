@@ -1,6 +1,6 @@
 export class Stock {
-  public stock_symbol : string;
-  public stock_name : string;
-  public stock_dividend : number;
-  public shares : number;
+  public symbol: string;
+  public name: string;
+  public price: number;
+  public shares: number;
 }

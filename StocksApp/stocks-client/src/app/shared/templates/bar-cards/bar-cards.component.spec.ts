@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FooterComponent } from './footer.component';
+import { BarCardsComponent } from './bar-cards.component';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
-describe('FooterComponent', () => {
-  let component: FooterComponent;
-  let fixture: ComponentFixture<FooterComponent>;
+describe('BarCardsComponent', () => {
+  let component: BarCardsComponent;
+  let fixture: ComponentFixture<BarCardsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FooterComponent ],
+      declarations: [ BarCardsComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     });
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FooterComponent);
+    fixture = TestBed.createComponent(BarCardsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

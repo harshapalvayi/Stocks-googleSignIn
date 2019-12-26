@@ -2,6 +2,7 @@ package com.StocksApp.StocksApp.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "stocks")
@@ -11,23 +12,20 @@ public class Stocks implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "stock_symbol")
-    private String stockSymbol;
+    @Column(name = "symbol")
+    private String symbol;
 
-    @Column(name = "stock_name")
-    private String stockName;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "stock_price")
-    private int stockPrice;
+    @Column(name = "price")
+    private BigDecimal price;
 
     @Column(name = "shares")
     private int shares;
 
-    @Column(name = "stock_dividend")
-    private int stockDividend;
 
-
-    protected Stocks() {
+    public Stocks() {
 
     }
 
@@ -39,36 +37,28 @@ public class Stocks implements Serializable {
         this.id = id;
     }
 
-    public String getStockSymbol() {
-        return stockSymbol;
+    public String getSymbol() {
+        return symbol;
     }
 
-    public void setStockSymbol(String stockSymbol) {
-        this.stockSymbol = stockSymbol;
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
-    public String getStockName() {
-        return stockName;
+    public String getName() {
+        return name;
     }
 
-    public void setStockName(String stockName) {
-        this.stockName = stockName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getStockPrice() {
-        return stockPrice;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public void setStockPrice(int stockPrice) {
-        this.stockPrice = stockPrice;
-    }
-
-    public int getStockDividend() {
-        return stockDividend;
-    }
-
-    public void setStockDividend(int stockDividend) {
-        this.stockDividend = stockDividend;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     public int getShares() {
@@ -79,11 +69,10 @@ public class Stocks implements Serializable {
         this.shares = shares;
     }
 
-    public Stocks(String stockSymbol, String stockName, int stockPrice, int stockDividend, int shares) {
-        this.stockSymbol = stockSymbol;
-        this.stockName = stockName;
-        this.stockPrice = stockPrice;
-        this.stockDividend = stockDividend;
+    public Stocks(String stockSymbol, String stockName, BigDecimal stockPrice, int shares) {
+        this.symbol = stockSymbol;
+        this.name = stockName;
+        this.price = stockPrice;
         this.shares = shares;
     }
 }
