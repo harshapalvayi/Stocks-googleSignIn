@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('NavbarComponent', () => {
   let component: HeaderComponent;
@@ -8,7 +11,9 @@ describe('NavbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      imports: [RouterTestingModule, HttpClientTestingModule],
+      declarations: [ HeaderComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     });
   }));
 

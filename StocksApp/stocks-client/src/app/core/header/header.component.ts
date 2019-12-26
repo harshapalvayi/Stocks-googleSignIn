@@ -1,5 +1,5 @@
 import {ChangeDetectorRef, Component, NgZone, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.navigateToDefaultUrl;
+     this.navigateToDefaultUrl();
   }
 
   // On hitting logo it should reroute to default page

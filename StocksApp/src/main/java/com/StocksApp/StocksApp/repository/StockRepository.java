@@ -8,5 +8,6 @@ import java.util.List;
 
 @Repository
 public interface StockRepository extends CrudRepository<Stocks, Long> {
-    List<Stocks> findByStockName(String stockName);
+     Stocks findBySymbol(String symbol);
+     List<Stocks> findAllBy();
 }

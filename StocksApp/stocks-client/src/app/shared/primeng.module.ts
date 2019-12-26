@@ -12,6 +12,7 @@ import {
   TieredMenuModule, ToggleButtonModule
 } from 'primeng/primeng';
 import {TableModule} from 'primeng/table';
+import {ChartModule} from 'primeng/chart';
 
 
 
@@ -32,6 +33,7 @@ import {TableModule} from 'primeng/table';
     CardModule,
     AccordionModule,
     TabViewModule,
+      ChartModule,
     ToggleButtonModule
   ],
   declarations: [],
@@ -49,6 +51,7 @@ import {TableModule} from 'primeng/table';
     TabMenuModule,
     AutoCompleteModule,
     CardModule,
+    ChartModule,
     AccordionModule,
     TabViewModule,
     ToggleButtonModule

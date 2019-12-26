@@ -1,8 +1,8 @@
 create table stocks (
- id BIGINT PRIMARY KEY  NOT NULL,
- stock_symbol VARCHAR(5),
- stock_name VARCHAR(255),
- stock_price INT NULL,
+ id BIGINT  PRIMARY KEY NOT NULL,
+ symbol VARCHAR(5),
+ name VARCHAR(255),
+ price DECIMAL NULL,
  shares INT NULL,
- stock_dividend INT NULL
+ UNIQUE (id, symbol)
 );

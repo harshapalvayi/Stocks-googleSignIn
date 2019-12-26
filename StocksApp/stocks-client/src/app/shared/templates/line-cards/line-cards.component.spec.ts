@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FooterComponent } from './footer.component';
+import { LineCardsComponent } from './line-cards.component';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
-describe('FooterComponent', () => {
-  let component: FooterComponent;
-  let fixture: ComponentFixture<FooterComponent>;
+describe('LineCardsComponent', () => {
+  let component: LineCardsComponent;
+  let fixture: ComponentFixture<LineCardsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FooterComponent ],
+      declarations: [ LineCardsComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     });
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FooterComponent);
+    fixture = TestBed.createComponent(LineCardsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
