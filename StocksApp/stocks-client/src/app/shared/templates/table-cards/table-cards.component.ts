@@ -9,7 +9,6 @@ import {Stock} from '../models/stock';
 export class TableCardsComponent implements OnInit {
 
   @Input() stocks: Stock[];
-
   cols: any[];
 
   constructor() { }

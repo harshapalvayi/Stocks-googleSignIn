@@ -26,16 +26,19 @@ public class StockController {
         String ticker = stockData.getSymbol().toUpperCase();
         String name = this.getStockData(ticker).getName();
         BigDecimal price = this.getStockData(ticker).getQuote().getPrice();
-        StockDividend dividend = this.getStockData(ticker).getDividend();
+        BigDecimal dividend = this.getStockData(ticker).getDividend().getAnnualYield();
         curr.setSymbol(ticker);
         curr.setName(name);
         curr.setPrice(price);
+        curr.setDividend(dividend);
+        curr.setAvg_price(stockData.getAvg_price());
         curr.setShares(stockData.getShares());
         Stocks st = stockRepository.findBySymbol(ticker);
-
-        if (st != null ) {
+        System.out.print("st" + curr.getId() + curr.getSymbol() + curr.getName() + curr.getAvg_price());
+        if (st != null) {
             curr.setId(st.getId());
             curr.setSymbol(ticker);
+            curr.setAvg_price(stockData.getAvg_price());
             curr.setShares(stockData.getShares());
         }
        return stockRepository.save(curr);
@@ -58,5 +61,10 @@ public class StockController {
     @GetMapping(value = "/all")
     public List<Stocks> getAllStocks() {
         return stockRepository.findAllBy();
+    }
+
+    @GetMapping(value = "/total")
+    public double getTotal() {
+        return stockRepository.total();
     }
 }

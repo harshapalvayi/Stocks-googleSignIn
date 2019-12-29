@@ -4,5 +4,7 @@ create table stocks (
  name VARCHAR(255),
  price DECIMAL NULL,
  shares INT NULL,
+ avg_price DECIMAL NULL,
+ dividend DECIMAL NULL,
  UNIQUE (id, symbol)
 );

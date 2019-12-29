@@ -13,8 +13,9 @@ import {
 } from 'primeng/primeng';
 import {TableModule} from 'primeng/table';
 import {ChartModule} from 'primeng/chart';
+import {DialogModule} from 'primeng/dialog';
 
-
+import {CarouselModule} from 'primeng/carousel';
 
 @NgModule({
     imports: [
@@ -33,7 +34,9 @@ import {ChartModule} from 'primeng/chart';
     CardModule,
     AccordionModule,
     TabViewModule,
-      ChartModule,
+    ChartModule,
+    DialogModule,
+    CarouselModule,
     ToggleButtonModule
   ],
   declarations: [],
@@ -54,6 +57,8 @@ import {ChartModule} from 'primeng/chart';
     ChartModule,
     AccordionModule,
     TabViewModule,
+    DialogModule,
+    CarouselModule,
     ToggleButtonModule
   ],
   providers: []

@@ -1,35 +1,19 @@
 <div class="container">
-  <p-card class="container mb-5">
-    <h4 class="text-center font-weight-bold header-color"> User Stocks</h4>
+  <div class="m-5">
+    <button pButton type="button" label="Add Stocks" icon="pi pi-plus" class="ui-button-rounded float-right"
+            (click)="addStockPopup()"></button>
+  </div>
+  <app-add-stocks (saved)="onAddStocks()"></app-add-stocks>
+</div>
 
-    <form [formGroup]="addStock" (ngSubmit)="onSubmitStock()">
-      <div class="d-flex flex-row flex-wrap justify-content-around align-items-center m-auto">
-        <div>
-          <label>Ticker
-            <input class="font-weight-bold ml-5" formControlName="symbol" type="text">
-          </label>
-        </div>
-
-        <div>
-          <label>Shares
-            <input class="font-weight-bold ml-5" formControlName="shares" type="number">
-          </label>
-        </div>
-      </div>
-
-      <div class="d-flex justify-content-center">
-        <button pButton type="button" label="Reset" class="mr-2 ui-button-rounded ui-button-secondary"
-                (click)="resetStock()"></button>
-
-        <button pButton type="button" label="Submit" class="ml-2 ui-button-rounded"
-                (click)="onSubmitStock()" [disabled]="addStock.invalid" ></button>
-      </div>
-
-    </form>
+<div class="container">
+  <div class="col-sm-4 mb-2">
+    <app-display-cards [title]="'Portfolio'" [data]="total"></app-display-cards>
+  </div>
+  <div class="col-sm-12">
+    <app-auto-play-cards *ngIf="stocks && stocks.length > 0" [stocks]="stocks"></app-auto-play-cards>
+  </div>
+  <p-card>
+    <app-table-cards [stocks]="stocks" ></app-table-cards>
   </p-card>
-
-  <p-card class="container mb-5">
-     <app-table-cards [stocks]="stocks" ></app-table-cards>
-  </p-card>
-
 </div>

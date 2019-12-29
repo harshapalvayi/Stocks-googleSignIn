@@ -7,6 +7,7 @@ import {LineCardsComponent} from './line-cards/line-cards.component';
 import {CoreModule} from '../../core/core.module';
 import {PrimengModule} from '../primeng.module';
 import {TableCardsComponent} from './table-cards/table-cards.component';
+import {AutoPlayCardsComponent} from './auto-play-cards/auto-play-cards.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {TableCardsComponent} from './table-cards/table-cards.component';
     DisplayCardsComponent,
     BarCardsComponent,
     LineCardsComponent,
-    TableCardsComponent
+    TableCardsComponent,
+    AutoPlayCardsComponent
   ],
   imports: [
     CoreModule,
@@ -25,7 +27,8 @@ import {TableCardsComponent} from './table-cards/table-cards.component';
     DisplayCardsComponent,
     BarCardsComponent,
     LineCardsComponent,
-    TableCardsComponent
+    TableCardsComponent,
+    AutoPlayCardsComponent
   ]
 })
 export class TemplatesModule { }
