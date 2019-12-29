@@ -1,14 +1,16 @@
-<p-table [value]="stocks">
-  <ng-template pTemplate="header">
+<p-table [columns]="cols" [value]="stocks" [paginator]="true" [rows]="15"
+         sortMode="multiple">
+  <ng-template pTemplate="header" let-columns>
     <tr>
-      <th *ngFor="let col of cols">
+      <th class="text-center" *ngFor="let col of columns" [pSortableColumn]="col.field">
         {{col.header}}
+        <p-sortIcon [field]="col.field"></p-sortIcon>
       </th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-stock>
+  <ng-template pTemplate="body" let-stock let-columns="columns">
     <tr>
-      <td *ngFor="let col of cols">
+      <td class="text-center" *ngFor="let col of columns">
         {{stock[col.field]}}
       </td>
     </tr>

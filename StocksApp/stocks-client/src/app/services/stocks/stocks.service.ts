@@ -18,6 +18,7 @@ export class StocksService {
   create(): FormGroup {
      this.addStock  = this.fb.group({
         symbol: ['', Validators.required],
+        avg_price: [null, Validators.required],
         shares: [null]
      });
      return this.addStock;
@@ -28,12 +29,15 @@ export class StocksService {
     return this.http.post<Stock>(`${this.baseUrl}/save`, stockData);
   }
 
-  getStockName(ticker: string): Observable<string> {
-      return this.http.get<string>(`${this.baseUrl}/ticker/${ticker}`);
+  getStockDetails(ticker: string): Observable<Stock> {
+      return this.http.get<Stock>(`${this.baseUrl}/ticker/${ticker}`);
   }
 
   getAllStocks(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/all`);
   }
 
+  getTotal(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/total`);
+  }
 }

@@ -4,6 +4,8 @@ import {ReportsRoutingModule} from './reports-routing.module';
 import {ReportsComponent} from './reports.component';
 import {TemplatesModule} from '../../shared/templates/templates.module';
 import {PrimengModule} from '../../shared/primeng.module';
+import {StocksService} from '../../services/stocks/stocks.service';
+import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -11,9 +13,12 @@ import {PrimengModule} from '../../shared/primeng.module';
     CommonModule,
     TemplatesModule,
     PrimengModule,
+    FormsModule,
+    ReactiveFormsModule,
     ReportsRoutingModule
   ],
   declarations: [ReportsComponent],
+  providers: [ StocksService, FormBuilder],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ReportsModule { }

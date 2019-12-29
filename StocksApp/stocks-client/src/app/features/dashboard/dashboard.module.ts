@@ -7,6 +7,7 @@ import {PrimengModule} from '../../shared/primeng.module';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {StocksService} from '../../services/stocks/stocks.service';
 import {TemplatesModule} from '../../shared/templates/templates.module';
+import {AddStocksComponent} from './add-stocks/add-stocks.component';
 
 @NgModule({
 
@@ -19,7 +20,7 @@ import {TemplatesModule} from '../../shared/templates/templates.module';
     ReactiveFormsModule,
     DashboardRoutingModule
   ],
-  declarations: [DashboardComponent],
+  declarations: [DashboardComponent, AddStocksComponent],
   providers: [ StocksService, FormBuilder],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

@@ -1,0 +1,12 @@
+<p-carousel *ngIf="stocks && stocks.length > 2" [value]="stocks"
+            styleClass="custom-carousel" [numVisible]="3" [numScroll]="1"
+            [circular]="true" [autoplayInterval]="3000">
+  <ng-template let-stock pTemplate="item">
+    <app-cards class="stock-data">
+          <div class="stock-title font-weight-bold">{{stock.name}}</div>
+      <div class="stock-subtitle" [ngClass]="stock.price > stock.avg_price ? 'text-success' : 'text-danger'">
+        {{stock.price}}
+      </div>
+   </app-cards>
+  </ng-template>
+</p-carousel>

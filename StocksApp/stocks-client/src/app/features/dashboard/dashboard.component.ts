@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {StocksService} from '../../services/stocks/stocks.service';
 import {Stock} from '../../shared/templates/models/stock';
+import {AddStocksComponent} from './add-stocks/add-stocks.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,31 +10,30 @@ import {Stock} from '../../shared/templates/models/stock';
 })
 export class DashboardComponent implements OnInit {
 
-  public addStock: FormGroup;
+  @ViewChild(AddStocksComponent, {static: false}) addStock: AddStocksComponent;
   public stocks: Stock[];
+  public total: number;
   constructor(private stockService: StocksService) { }
 
   ngOnInit() {
-    this.createForm();
     this.buildTableData();
   }
 
-  createForm() {
-    this.addStock = this.stockService.create();
-  }
-
-  resetStock() {
-    this.addStock.reset();
-  }
-
   buildTableData() {
-    this.stockService.getAllStocks().subscribe(stocks => this.stocks = stocks);
-  }
-
-  onSubmitStock() {
-    const stockData = this.addStock.getRawValue();
-    this.stockService.save(stockData).subscribe(() => {
-      this.buildTableData();
+    this.stockService.getAllStocks().subscribe(stocks => {
+      this.stocks = stocks;
+      if (this.stocks && this.stocks.length > 0) {
+        this.stockService.getTotal().subscribe(total => this.total = total);
+      }
     });
   }
+
+  onAddStocks() {
+      this.buildTableData();
+  }
+
+  addStockPopup() {
+    this.addStock.showDialog();
+  }
+
 }
