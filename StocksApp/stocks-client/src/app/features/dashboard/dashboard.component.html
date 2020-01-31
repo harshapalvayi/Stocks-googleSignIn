@@ -11,9 +11,9 @@
     <app-display-cards [title]="'Portfolio'" [data]="total"></app-display-cards>
   </div>
   <div class="col-sm-12">
-    <app-auto-play-cards *ngIf="stocks && stocks.length > 0" [stocks]="stocks"></app-auto-play-cards>
+    <app-auto-play-cards [stocks]="stocks" [count]="stockCount"></app-auto-play-cards>
   </div>
   <p-card>
-    <app-table-cards [stocks]="stocks" ></app-table-cards>
+    <app-table-cards (deleted)="onDeleteStock()" [stocks]="stocks" ></app-table-cards>
   </p-card>
 </div>

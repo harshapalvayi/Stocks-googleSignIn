@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Stock} from '../../models/Stock';
+import {Stock} from '../../shared/templates/models/stock';
+import {Dates} from '../../models/dates';
 
 @Injectable({
   providedIn: 'root'
@@ -29,12 +30,25 @@ export class StocksService {
     return this.http.post<Stock>(`${this.baseUrl}/save`, stockData);
   }
 
+  edit(stockData: Stock): Observable<Stock> {
+    return this.http.post<Stock>(`${this.baseUrl}/edit`, stockData);
+  }
+
   getStockDetails(ticker: string): Observable<Stock> {
       return this.http.get<Stock>(`${this.baseUrl}/ticker/${ticker}`);
   }
 
-  getAllStocks(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/all`);
+  deleteStock(id: number) {
+    console.log('id', id);
+    return this.http.get<any>(`${this.baseUrl}/delete/${id}`);
+  }
+
+  getAllStocks(userId: string): Observable<Stock[]> {
+    return this.http.get<Stock[]>(`${this.baseUrl}/all/${userId}`);
+  }
+
+  getDividendStocks(date: Dates): Observable<Stock[]> {
+    return this.http.get<Stock[]>(`${this.baseUrl}/dividend/${date.startDate}/${date.endDate}`);
   }
 
   getTotal(): Observable<number> {

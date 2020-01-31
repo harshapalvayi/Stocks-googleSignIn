@@ -1,27 +1,31 @@
 <header class="nav-bar">
 
   <div id="headerWrapper">
-      <div class="nav-content">
+      <div class="nav-content" *ngIf="this.userData && this.userData.id">
         <div>
-          <span class="font-weight-bolder font-italic header-label pointer"
-                (click)="navigateToDefaultUrl()"> STOCKS </span>
+          <span class="font-weight-bolder header-label pointer"
+                (click)="navigateToDefaultPage()"> STOCKS </span>
         </div>
 
         <div>
           <ul class="nav">
             <li class="header-nav">
-              <a class="font-weight-bolder font-italic nav-label"
+              <a class="font-weight-bolder nav-label"
                  routerLink="/app-dashboard" routerLinkActive="active">
                   Dashboard
               </a>
-              <a class="font-weight-bolder font-italic nav-label"
+              <a class="font-weight-bolder nav-label"
                  routerLink="/app-reports"  routerLinkActive="active"> Reports </a>
-              <a class="font-weight-bolder font-italic nav-label"
+              <a class="font-weight-bolder nav-label"
                  routerLink="/app-contacts" routerLinkActive="active"> Contacts </a>
             </li>
           </ul>
         </div>
 
+        <div>
+          <span  class="text-white">Welcome {{userData.name}}</span>
+          <a class=" ml-2 pointer text-white" (click)="signOut('google')">Sign Out</a>
+        </div>
       </div>
   </div>
 

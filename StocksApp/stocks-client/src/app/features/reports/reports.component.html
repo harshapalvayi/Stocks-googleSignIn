@@ -1,5 +1,14 @@
 <div class="container">
-  <div class="row">
-    <app-bar-cards class="w-100" [data]="chart"></app-bar-cards>
-  </div>
+
+  <p-tabView (onChange)="tabChange($event)">
+    <p-tabPanel [header]="item.label" *ngFor="let item of items; let i = index" [selected]="i == 0">
+      <div class="m-5" [ngSwitch]="tabs">
+        <app-bar-cards class="w-100" *ngSwitchCase="selected.PRICE" [data]="price"></app-bar-cards>
+        <app-bar-cards class="w-100" *ngSwitchCase="selected.COST" [data]="cost"></app-bar-cards>
+        <app-bar-cards class="w-100" *ngSwitchCase="selected.EQUITY" [data]="equity"></app-bar-cards>
+        <app-bar-cards class="w-100" *ngSwitchCase="selected.DIVIDEND" [data]="dividends"></app-bar-cards>
+        <app-monthly-dividends class="w-100" *ngSwitchCase="selected.MONTHLY_DIVIDEND"  [stocks]="stocks" ></app-monthly-dividends>
+      </div>
+    </p-tabPanel>
+  </p-tabView>
 </div>

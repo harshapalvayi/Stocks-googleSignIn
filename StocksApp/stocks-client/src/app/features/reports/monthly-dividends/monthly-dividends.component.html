@@ -1,0 +1,19 @@
+<p-table class="mb-3" [columns]="cols"  [value]="stocks" [paginator]="true" [rows]="10">
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th class="text-center" *ngFor="let col of columns" [ngStyle]="{'width': col.width}">
+        {{col.header}}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-stock let-columns="columns">
+    <tr>
+      <td class="text-center">{{stock.symbol}}</td>
+      <td class="text-left">{{stock.name}}</td>
+      <td class="text-center">{{stock.ex_date}}</td>
+      <td class="text-center">{{stock.pay_date}}</td>
+      <td class="text-center">{{stock.shares}}</td>
+      <td class="text-center">{{getTotals(stock) | number}}</td>
+    </tr>
+  </ng-template>
+</p-table>

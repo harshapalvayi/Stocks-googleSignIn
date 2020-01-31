@@ -9,6 +9,7 @@ import {Stock} from '../models/stock';
 export class AutoPlayCardsComponent implements OnInit {
 
   @Input() public stocks: Stock[];
+  @Input() public count: number;
   constructor() { }
 
   ngOnInit() {}

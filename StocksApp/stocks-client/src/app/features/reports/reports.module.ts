@@ -6,18 +6,19 @@ import {TemplatesModule} from '../../shared/templates/templates.module';
 import {PrimengModule} from '../../shared/primeng.module';
 import {StocksService} from '../../services/stocks/stocks.service';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MonthlyDividendsComponent} from './monthly-dividends/monthly-dividends.component';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    TemplatesModule,
-    PrimengModule,
     FormsModule,
+    PrimengModule,
+    TemplatesModule,
     ReactiveFormsModule,
     ReportsRoutingModule
   ],
-  declarations: [ReportsComponent],
+  declarations: [ReportsComponent, MonthlyDividendsComponent],
   providers: [ StocksService, FormBuilder],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
