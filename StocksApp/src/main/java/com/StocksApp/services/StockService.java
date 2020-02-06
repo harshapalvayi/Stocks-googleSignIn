@@ -1,4 +1,4 @@
-package com.StocksApp.StocksApp.services;
+package com.StocksApp.services;
 
 import org.springframework.stereotype.Service;
 

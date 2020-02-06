@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {AuthService, GoogleLoginProvider} from 'angular-6-social-login';
 import {User} from '../../shared/domain/user';
 import {Subject} from 'rxjs';
 
@@ -9,7 +8,7 @@ import {Subject} from 'rxjs';
 export class UserService {
   private userData: Subject<User> = new Subject<User>();
 
-  constructor(private authService: AuthService) {}
+  constructor() {}
 
   getUserData() {
     return this.userData;
@@ -19,7 +18,7 @@ export class UserService {
     this.userData.next({...user});
   }
 
-  authenticateUser() {
+ /* authenticateUser() {
     setTimeout(() => {
       this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
       (userData) => {
@@ -31,6 +30,23 @@ export class UserService {
     );
   },2000);
 
-}
+}*/
+
+  authenticate(username, password) {
+    if(username && password) {
+      sessionStorage.setItem('authenticaterUser', username);
+      return true;
+    }
+    return false;
+  }
+
+  isUserLoggedIn() {
+    const user = sessionStorage.getItem('authenticaterUser');
+    return !(user === null);
+  }
+
+  logout() {
+    sessionStorage.removeItem('authenticaterUser')
+  }
 
 }

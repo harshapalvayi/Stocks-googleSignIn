@@ -1,4 +1,4 @@
-package com.StocksApp.StocksApp.models;
+package com.StocksApp.models;
 
 import javax.persistence.*;
 import java.io.Serializable;

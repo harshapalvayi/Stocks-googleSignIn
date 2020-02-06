@@ -1,0 +1,24 @@
+<div class="container">
+  <form class="m-5" [formGroup] = "loginForm" (ngSubmit)="submit()">
+    <header class="text-center">
+      <h3><strong>Login</strong></h3>
+    </header><br>
+    <div class="text-center" >
+      <label>
+        <span class="text-left">UserName:  </span>
+        <input class="text-right" formControlName="username" maxlength="12"/>
+      </label>
+    </div>
+    <div class="text-center">
+      <label>
+        <span class="text-left">Password:</span>
+        <input class="text-right" formControlName="password"/>
+      </label>
+    </div>
+
+    <div class="text-center">
+      <p-button [disabled]="loginForm.invalid" label="submit"></p-button>
+    </div>
+
+  </form>
+</div>

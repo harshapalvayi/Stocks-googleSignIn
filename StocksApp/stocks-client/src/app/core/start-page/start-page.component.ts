@@ -1,5 +1,4 @@
 import {ChangeDetectorRef, Component, NgZone, OnInit} from '@angular/core';
-import {AuthService} from 'angular-6-social-login';
 import {UserService} from '../../services/user/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
@@ -14,14 +13,13 @@ export class StartPageComponent implements OnInit {
               private ngZone: NgZone,
               private router: Router,
               private route: ActivatedRoute,
-              private authService: AuthService,
               private userService: UserService) { }
 
   ngOnInit() {
-    this.userService.getUserData().subscribe(data => {
-      if (data) {
-        this.router.navigateByUrl('/app-dashboard');
-      }
-    });
+    if (this.userService.isUserLoggedIn()) {
+      this.router.navigateByUrl('/app-dashboard');
+    } else {
+      this.router.navigateByUrl('/app-login-page');
+    }
   }
 }

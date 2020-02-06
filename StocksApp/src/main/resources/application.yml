@@ -1,7 +1,7 @@
 spring:
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
     properties:
@@ -14,30 +14,19 @@ spring:
     url: "jdbc:postgresql://localhost:5432/stocks"
     username: postgres
     password:  admin
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            clientId: 807427377963-562hbttj9aeupq1ho0l1t16rfj9j803l.apps.googleusercontent.com
-            clientSecret: LMR8F0v7apjWWsYFwBH5zClZ
-            redirectUriTemplate: "{baseUrl}/oauth2/callback/{registrationId}"
-            scope:
-              - email
-              - profile
-app:
-  auth:
-    tokenSecret: 926D96C90030DD58429D2751AC1BDBBC
-    tokenExpirationMsec: 864000000
-  oauth2:
-    # After successfully authenticating with the OAuth2 Provider,
-    # we'll be generating an auth token for the user and sending the token to the
-    # redirectUri mentioned by the client in the /oauth2/authorize request.
-    # We're not using cookies because they won't work well in mobile clients.
-    authorizedRedirectUris:
-      - http://localhost:4200/oauth2/redirect
-      - myandroidapp://oauth2/redirect
-      - myiosapp://oauth2/redirect
+
+  #security:
+   # oauth2:
+    #  client:
+     #   registration:
+      #    google:
+       #     clientId: 807427377963-562hbttj9aeupq1ho0l1t16rfj9j803l.apps.googleusercontent.com
+        #    clientSecret: LMR8F0v7apjWWsYFwBH5zClZ
+         #   redirectUriTemplate: "{baseUrl}/oauth2/callback/{registrationId}"
+          #  scope:
+           #   - email
+            #  - profile
 jwt:
   header: Authorization
   secret: stockticker
+

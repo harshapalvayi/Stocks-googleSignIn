@@ -20,13 +20,13 @@ export class TableCardsComponent implements OnInit {
   ngOnInit() {
 
     this.cols = [
-      { field: 'symbol', header: 'Ticker', width:'10%'},
-      {field: 'name', header: 'Stock', width:'30%'},
-      { field: 'price', header: 'Price', width:'10%'},
-      { field: 'avg_price', header: 'Buy', width:'10%' },
-      { field: 'shares', header: 'Shares', width:'10%' },
-      { field: 'dividend', header: 'Dividend', width:'15%' },
-      { field: '', header: 'Actions', width:'15%' }
+      { field: 'symbol', header: 'Ticker', width: '10%'},
+      {field: 'name', header: 'Stock', width: '30%'},
+      { field: 'price', header: 'Price', width: '10%'},
+      { field: 'avg_price', header: 'Buy', width: '10%' },
+      { field: 'shares', header: 'Shares', width: '10%' },
+      { field: 'dividend', header: 'Dividend', width: '15%' },
+      { field: '', header: 'Actions',  width: '15%' }
     ];
   }
 

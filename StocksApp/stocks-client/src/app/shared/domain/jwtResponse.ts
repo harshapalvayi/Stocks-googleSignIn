@@ -1,4 +1,4 @@
 export class JwtResponse {
-  constructor(public jwttoken:string) {}
+  constructor(public jwttoken: string) {}
 
 }

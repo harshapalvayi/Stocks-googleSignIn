@@ -1,7 +1,7 @@
-package com.StocksApp.StocksApp.controllers;
+package com.StocksApp.controllers;
 
-import com.StocksApp.StocksApp.models.Stocks;
-import com.StocksApp.StocksApp.repository.StockRepository;
+import com.StocksApp.models.Stocks;
+import com.StocksApp.repository.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import yahoofinance.Stock;

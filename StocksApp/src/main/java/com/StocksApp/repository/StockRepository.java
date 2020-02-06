@@ -1,6 +1,6 @@
-package com.StocksApp.StocksApp.repository;
+package com.StocksApp.repository;
 
-import com.StocksApp.StocksApp.models.Stocks;
+import com.StocksApp.models.Stocks;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

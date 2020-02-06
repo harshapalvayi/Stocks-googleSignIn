@@ -8,7 +8,7 @@ import {CoreModule} from '../../core/core.module';
 import {PrimengModule} from '../primeng.module';
 import {TableCardsComponent} from './table-cards/table-cards.component';
 import {AutoPlayCardsComponent} from './auto-play-cards/auto-play-cards.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({

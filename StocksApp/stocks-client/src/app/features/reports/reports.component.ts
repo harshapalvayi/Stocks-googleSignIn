@@ -40,7 +40,6 @@ export class ReportsComponent implements OnInit {
   }
 
   public tabChange(id) {
-    console.log(id.index);
      if (id) {
        switch(id.index) {
          case 0:
