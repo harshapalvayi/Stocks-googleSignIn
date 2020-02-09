@@ -1,6 +1,16 @@
 
 <footer>
-  <div class="footer-style text-dark">
+  <div class="footer-style text-dark" *ngIf="userInfo && userInfo.id; else dothis">
     <span>&copy; Copyright {{year | date:'yyyy'}} The Stocks Co. All Rights Reserved.</span>
   </div>
+
+  <ng-template #dothis>
+    <div class="container">
+      <app-cards class="w-full">
+
+      </app-cards>
+    </div>
+  </ng-template>
 </footer>
+
+

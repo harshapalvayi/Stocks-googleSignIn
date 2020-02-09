@@ -1,11 +1,11 @@
-package com.StocksApp.StocksApp.models;
+package com.StocksApp.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Entity
-@Table(name = "stocks")
 public class Stocks implements Serializable {
 
     @Id
@@ -19,29 +19,33 @@ public class Stocks implements Serializable {
             allocationSize = 1
     )
     @Column(
-            name = "id",
             unique = true,
-            updatable = false,
             nullable = false
     )
     private long id;
 
-    @Column(name = "symbol")
+    private String user_id;
+
     private String symbol;
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "price")
     private BigDecimal price;
 
-    @Column(name = "avg_price")
     private BigDecimal avg_price;
 
-    @Column(name = "dividend")
     private BigDecimal dividend;
 
-    @Column(name = "shares")
+    @Temporal(TemporalType.DATE)
+    private Date pay_date;
+
+    private Date ex_date;
+
+    private BigDecimal equity;
+
+    private BigDecimal cost;
+
+
     private int shares;
 
     public Stocks() {
@@ -54,6 +58,15 @@ public class Stocks implements Serializable {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
     public String getSymbol() {
@@ -92,6 +105,22 @@ public class Stocks implements Serializable {
         this.dividend = dividend;
     }
 
+    public Date getPay_date() {
+        return pay_date;
+    }
+
+    public void setPay_date(Date pay_date) {
+        this.pay_date = pay_date;
+    }
+
+    public Date getEx_date() {
+        return ex_date;
+    }
+
+    public void setEx_date(Date ex_date) {
+        this.ex_date = ex_date;
+    }
+
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
@@ -100,16 +129,40 @@ public class Stocks implements Serializable {
         return shares;
     }
 
+    public BigDecimal getEquity() {
+        return equity;
+    }
+
+    public void setEquity(BigDecimal equity) {
+        BigDecimal price = this.price;
+        this.equity  = BigDecimal.valueOf(this.shares).multiply(price);
+    }
+
+    public BigDecimal getCost() {
+        return cost;
+    }
+
+    public void setCost(BigDecimal cost) {
+        BigDecimal price = this.avg_price;
+        this.cost  = BigDecimal.valueOf(this.shares).multiply(price);
+    }
+
     public void setShares(int shares) {
         this.shares = shares;
     }
 
-    public Stocks(String stockSymbol, String stockName, BigDecimal stockPrice, BigDecimal avg_price, BigDecimal dividend, int shares) {
+    public Stocks(String userId, String stockSymbol, String stockName, BigDecimal stockPrice, BigDecimal avg_price,
+                  BigDecimal dividend,  Date pay_date, Date ex_date, BigDecimal equity, BigDecimal cost, int shares) {
+        this.user_id = userId;
         this.symbol = stockSymbol;
         this.name = stockName;
         this.price = stockPrice;
         this.avg_price = avg_price;
         this.dividend = dividend;
+        this.pay_date = pay_date;
+        this.ex_date = ex_date;
+        this.equity = equity;
+        this.cost  = cost;
         this.shares = shares;
     }
 }

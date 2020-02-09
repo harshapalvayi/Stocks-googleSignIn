@@ -1,8 +1,12 @@
 spring:
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql:true
   flyway:
     enabled: true
     baseline-on-migrate: true
@@ -10,14 +14,19 @@ spring:
     url: "jdbc:postgresql://localhost:5432/stocks"
     username: postgres
     password:  admin
-      # security:
-      #  oauth2:
-      #   client:
-      #    registration:
-      #     google:
-      #      clientId: 807427377963-562hbttj9aeupq1ho0l1t16rfj9j803l.apps.googleusercontent.com
-      #     clientSecret: LMR8F0v7apjWWsYFwBH5zClZ
-      #    scope:
-      #     - email
-      #    - profile
+
+  #security:
+   # oauth2:
+    #  client:
+     #   registration:
+      #    google:
+       #     clientId: 807427377963-562hbttj9aeupq1ho0l1t16rfj9j803l.apps.googleusercontent.com
+        #    clientSecret: LMR8F0v7apjWWsYFwBH5zClZ
+         #   redirectUriTemplate: "{baseUrl}/oauth2/callback/{registrationId}"
+          #  scope:
+           #   - email
+            #  - profile
+jwt:
+  header: Authorization
+  secret: stockticker
 

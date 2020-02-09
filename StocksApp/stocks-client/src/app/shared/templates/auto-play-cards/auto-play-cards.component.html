@@ -1,11 +1,21 @@
-<p-carousel *ngIf="stocks && stocks.length > 2" [value]="stocks"
-            styleClass="custom-carousel" [numVisible]="3" [numScroll]="1"
-            [circular]="true" [autoplayInterval]="3000">
+<p-carousel *ngIf="stocks && stocks.length > 0" [value]="stocks"
+            styleClass="custom-carousel" [numVisible]="count < 3 ? count : 3" [numScroll]="1"
+            [circular]="true" [autoplayInterval]="5000">
   <ng-template let-stock pTemplate="item">
     <app-cards class="stock-data">
-          <div class="stock-title font-weight-bold">{{stock.name}}</div>
-      <div class="stock-subtitle" [ngClass]="stock.price > stock.avg_price ? 'text-success' : 'text-danger'">
-        {{stock.price}}
+      <div class="stock-title font-weight-bold">{{stock.name}}</div>
+      <div class="mx-3 my-1">
+        <div><strong> Price:</strong>
+          <span class="ml-1 stock-subtitle font-weight-bold" [ngClass]="stock.price > stock.avg_price ? 'text-success' : 'text-danger'">{{stock.price}}</span>
+        </div>
+        <div>
+          <strong> Equity: </strong>
+          <span class="ml-1 stock-subtitle font-weight-bold" [ngClass]="stock.equity > stock.cost ? 'text-success' : 'text-danger'"> {{stock.equity}} </span>
+        </div>
+        <div>
+          <strong> Cost: </strong>
+          <span class="ml-1 stock-subtitle font-weight-bold" [ngClass]="stock.cost < stock.equity ? 'text-success' : 'text-danger'"> {{stock.cost}} </span>
+        </div>
       </div>
    </app-cards>
   </ng-template>

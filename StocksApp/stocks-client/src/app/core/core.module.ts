@@ -7,19 +7,25 @@ import {PageNotFoundComponent} from './page-not-found-component/page-not-found-c
 import {PrimengModule} from '../shared/primeng.module';
 import {StartPageComponent} from './start-page/start-page.component';
 import {CardsComponent} from './cards/cards.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { LogoutComponent } from './logout/logout.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    PrimengModule,
-    RouterModule
-  ],
+    imports: [
+        CommonModule,
+        PrimengModule,
+        RouterModule,
+        ReactiveFormsModule
+    ],
   declarations: [
     HeaderComponent,
     FooterComponent,
     CardsComponent,
     StartPageComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LoginPageComponent,
+    LogoutComponent
 ],
   exports: [
     HeaderComponent,

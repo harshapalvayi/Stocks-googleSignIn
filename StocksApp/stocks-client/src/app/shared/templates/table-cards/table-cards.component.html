@@ -1,18 +1,49 @@
-<p-table [columns]="cols" [value]="stocks" [paginator]="true" [rows]="15"
-         sortMode="multiple">
+<p-table class="mb-5" [columns]="cols"  [value]="stocks" editMode="row" dataKey="symbol" [paginator]="true" [rows]="10">
   <ng-template pTemplate="header" let-columns>
     <tr>
-      <th class="text-center" *ngFor="let col of columns" [pSortableColumn]="col.field">
+      <th class="text-center" *ngFor="let col of columns" [pSortableColumn]="col.field" [ngStyle]="{'width': col.width}">
         {{col.header}}
         <p-sortIcon [field]="col.field"></p-sortIcon>
       </th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-stock let-columns="columns">
-    <tr>
-      <td class="text-center" *ngFor="let col of columns">
-        {{stock[col.field]}}
+  <ng-template pTemplate="body" let-stock let-editing="editing" let-ri="rowIndex">
+    <tr [pEditableRow]="stock">
+      <td class="text-center">{{stock.symbol}}</td>
+      <td class="text-left">{{stock.name}}</td>
+      <td class="text-center">{{stock.price}}</td>
+      <td class="text-center">
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <label>
+              <input pInputText  class="w-75" type="number" [(ngModel)]="stock.avg_price">
+            </label>
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{stock.avg_price}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+      <td class="text-center">
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <label>
+              <input pInputText class="w-75" type="number" [(ngModel)]="stock.shares">
+            </label>
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{stock.shares}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+      <td class="text-center">{{stock.dividend}}</td>
+      <td class="text-center">
+        <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil" class="ui-button-info" (click)="onRowEditInit(stock)"></button>
+        <button *ngIf="!editing" pButton type="button" icon="pi pi-times" class="ui-button-danger" style="margin-left: .5em" (click)="deleteStock(stock)"></button>
+        <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success" style="margin-right: .5em" (click)="onRowEditSave(stock)"></button>
+        <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger" (click)="onRowEditCancel(stock, ri)"></button>
       </td>
     </tr>
   </ng-template>
 </p-table>
+
